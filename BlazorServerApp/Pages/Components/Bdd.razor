@@ -1,0 +1,32 @@
+﻿@page "/bdd"
+@using DataAccessLibrary.DataAccessLayer
+@using DataAccessLibrary.Models
+@inject ICiudadDAL CiudadDA
+
+
+<h3>Bdd</h3>
+
+<button class="btn btn-primary" @onclick="ShowCiudades">Show Ciudades</button>
+
+@if(Ciudades != null && Ciudades.Count > 0){
+    <h4>Ciudades:</h4>
+    <br />
+    foreach(CiudadModel ciudad in Ciudades)
+    {
+        <p>@ciudad.NomCiudad</p>
+    }
+}
+
+@code {
+    List<CiudadModel>? Ciudades { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+    }
+
+    private async Task ShowCiudades()
+    {
+        Ciudades = await CiudadDA.TraeTodasCiudadesAsync();
+    }
+
+}

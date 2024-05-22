@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DbAccess\" />
+    <Folder Include="Models\" />
+    <Folder Include="QueriesStrategy\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <Reference Include="UCommon">
+      <HintPath>..\..\..\..\..\..\Users\mleon\source\repos\UCommon\bin\Debug\netstandard2.0\UCommon.dll</HintPath>
+    </Reference>
+	  <Using Include="DataAccessProject" />
+  </ItemGroup>
+
+</Project>

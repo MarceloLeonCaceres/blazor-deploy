@@ -1,4 +1,6 @@
 using BlazorServerApp.Data;
+using DataAccessLibrary.DataAccessLayer;
+using DataAccessLibrary.DbAccess;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -7,7 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor().AddCircuitOptions(opt =>
+{
+    opt.DetailedErrors = true;
+});
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
+builder.Services.AddSingleton<ICiudadDAL, CiudadDAL>();
+
 
 var app = builder.Build();
 
